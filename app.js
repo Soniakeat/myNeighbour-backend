@@ -62,13 +62,13 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // ROUTER MIDDLEWARE
 const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
+const profileRouter = require("./routes/profile");
 const authRouter = require("./routes/auth");
 const itemRouter = require("./routes/items");
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
-app.use("/users", usersRouter);
+app.use("/profile", profileRouter);
 app.use("/items", itemRouter);
 
 // ERROR HANDLING

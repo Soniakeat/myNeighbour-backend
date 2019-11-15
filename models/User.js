@@ -17,10 +17,6 @@ const userSchema = new Schema({
   lastName: String,
   phoneNumber: String,
   postalCode: String,
-  neighbours: [{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }]
 }, {
   timestamps: {
     createdAt: 'created_at',

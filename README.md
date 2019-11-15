@@ -19,14 +19,14 @@ With myNEIGHBOUR, the user can propose his unused items that his neighbours need
 
 
 ## Backlog
-Geo Location:
-- see myNeighbour location in a map (only by area)
-Seach bar:
-- to search an item by name, categories and geographic area.
-Chat:
-- to contact my neighbour when I'm interested by an item.
-App:
-- responsive
+- **Geo Location**
+To see myNeighbour location on a map (only by area)
+- **Seach bar**
+To search an item by name, categories and geographic area.
+- **Chat**
+To contact my neighbour when I'm interested by an item.
+- **App**
+Responsive
   
 # Client
 - / - Login
@@ -56,12 +56,16 @@ App:
 - /item/add - Add new item form
 - /item/_id/edit - Item edit form
 - /item/_id/delete - Delete personal item
+- /item/_id/contact/add - Añadir contact
+- /item/_id/contact/_id/delete - Delete contact
 
 ### profile
 - /profile/_id - Profile of a neighbour
-- /profile/contact/_id - Contact of a owner item
+- /profile/items/_id - items of one user
 - /profile/edit/_id - Personal profil edit form
 - /profile/delete/_id - Delete personal profile
+
+
 
 ### Not Found
 - 404
@@ -75,6 +79,8 @@ App:
 - Item detail (user only)
 - Profile Page (user only)
 - Profile edit Page (admin only)
+- Item edit Page (admin only)
+- Contacts edit Page (admin only)
 - 404 Page (anon)
 
 ## Components
@@ -83,18 +89,25 @@ App:
 - Login
 - SignUp
 - SignUp-Next
-- Login
 - items-List
 - Item-Detail
+- Item-Edit
 - Profile
 - Profile-Edit
 - Profile-Contact
 
 
 ## Services
+- getAllItems() - All the items
+- getOneItem() - Item details 
+- addOneItem() - Add one item
+- editOneItem() - Edit one item
+- deleteOneItem() - Delete one item
+- addContactItem() - 
+- getOneUser() - Profile of one user
+- getOneUserItems() - Items of one user
 
-- getItems() - All the items
-- getItem() - item details 
+
 
 
 # Server
@@ -133,6 +146,7 @@ Item model
 ## API Endpoints/Backend Routes
 
 ### Auth
+```
 - POST /auth/login
   - body:
     - email
@@ -188,7 +202,7 @@ Item model
       - lastName
       - phoneNumber
 - DELETE /profile/edit
-
+```
 
 ## Links
 

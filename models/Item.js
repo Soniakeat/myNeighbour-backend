@@ -16,9 +16,10 @@ const itemSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  likes: [{
+  contacts: [{
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    default: []
   }]
 }, {
   timestamps: {
