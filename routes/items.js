@@ -3,8 +3,6 @@ const router = express.Router();
 const Item = require("../models/Item");
 const {
     isLoggedIn,
-    isNotLoggedIn,
-    validationLoggin
 } = require("../helpers/middlewares");
 
 //GET all items
@@ -13,7 +11,7 @@ router.get("/", isLoggedIn(), async (req, res, next) => {
         const allItems = await Item.find();
         res.json(allItems.reverse());
     } catch (error) {
-        console.error(error);
+        next(error);
     }
 });
 
@@ -24,7 +22,7 @@ router.get("/:id", isLoggedIn(), async (req, res, next) => {
         const oneItem = await Item.findById(itemId).populate("owner");
         res.json(oneItem);
     } catch (error) {
-        console.error(error);
+        next(error);
     }
 });
 
@@ -43,7 +41,7 @@ router.post("/add", isLoggedIn(), async (req, res, next) => {
         });
         res.json(newItem);
     } catch (error) {
-        console.error(error);
+        next(error);
     }
 });
 
@@ -73,7 +71,7 @@ router.put("/edit/:id", isLoggedIn(), async (req, res, next) => {
             res.json("You cant update this item");
         }
     } catch (error) {
-        console.error(error);
+        next(error);
     }
 });
 
@@ -90,7 +88,7 @@ router.delete("/:id", isLoggedIn(), async (req, res, next) => {
             res.json("You cant delete this item");
         }
     } catch (error) {
-        console.error(error);
+        next(error);
     }
 });
 
@@ -115,12 +113,12 @@ router.put("/:id/contact/add", isLoggedIn(), async (req, res, next) => {
         );
         res.json(itemWithContact);
     } catch (error) {
-        console.error(error);
+        next(error);
     }
 });
 
 //DELETE Delete Contact to item                   ??????
-router.get(
+/* router.get(
     "/:itemId/contact/:contactId/delete",
     isLoggedIn(),
     async (req, res, next) => {
@@ -141,6 +139,6 @@ router.get(
             console.error(error);
         }
     }
-);
+); */
 
 module.exports = router;

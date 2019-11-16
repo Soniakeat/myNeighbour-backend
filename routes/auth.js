@@ -14,7 +14,7 @@ const {
 } = require('../helpers/middlewares');
 
 //GET All Users
-router.get('/', async (req, res, next) => {
+router.get('/users', async (req, res, next) => {
     const allUsers = await User.find()
     res.json(allUsers);
 });
@@ -118,17 +118,6 @@ router.post('/logout', isLoggedIn(), (req, res, next) => {
     return;
 });
 
-//  DELETE    'auth/logout'
-router.delete('/', isLoggedIn(), async (req, res, next) => {
-    try {
-        const userId = req.session.currentUser._id
-        const deletedUser = await User.findByIdAndDelete(userId)
-        req.session.destroy();
-        res.json(deletedUser);
-    } catch (error) {
-        console.error(error)
-    }
-});
 
 
 //  GET    '/private'   --> Only for testing - Same as /me but it returns a message instead

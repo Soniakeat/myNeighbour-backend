@@ -7,8 +7,6 @@ const Item = require('../models/Item');
 //Helper functions
 const {
     isLoggedIn,
-    isNotLoggedIn,
-    validationLoggin
 } = require('../helpers/middlewares');
 
 //GET Profile info of One User and his items
@@ -26,7 +24,7 @@ router.get('/:id', isLoggedIn(), async (req, res, next) => {
             items
         })
     } catch (error) {
-        console.error(error)
+        next(error);
     }
 });
 
@@ -64,13 +62,19 @@ router.put('/edit/:id', isLoggedIn(), async (req, res, next) => {
 
 
 //DELETE Delete Profile
-router.delete('/delete/:id', isLoggedIn(), async (req, res, next) => {
+router.delete('/delete/:id', isLoggedIn(), async (req, res, next) => { 
+    const userId = req.session.currentUser._id;
+    const sessionId = req.params.id;
     try {
-
-
+        if( userId === sessionId){
+            await User.findByIdAndDelete(userId)
+            res.json({message: 'your profile has been deleted'})
+        }else{
+            next(createError(403));
+        }
 
     } catch (error) {
-        console.error(error)
+        next(error);
     }
 })
 
