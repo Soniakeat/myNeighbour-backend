@@ -21,7 +21,7 @@ router.get("/", isLoggedIn(), async (req, res, next) => {
 router.get("/:id", isLoggedIn(), async (req, res, next) => {
     try {
         const itemId = req.params.id;
-        const oneItem = await Item.findById(itemId).populate("owner");
+        const oneItem = await Item.findById(itemId).populate("owner").populate("contacts");
         res.json(oneItem);
     } catch (error) {
         next(error);

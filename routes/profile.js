@@ -9,8 +9,8 @@ const {
     isLoggedIn,
 } = require('../helpers/middlewares');
 
-//GET Profile info of One User and his items
-router.get('/:id', isLoggedIn(), async (req, res, next) => {
+//GET Profile info of owner and his items
+router.get('/:id/items', isLoggedIn(), async (req, res, next) => {
     try {
         const {
             id

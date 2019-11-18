@@ -19,6 +19,13 @@ router.get('/users', async (req, res, next) => {
     res.json(allUsers);
 });
 
+//GET One User
+router.get('/users/:id', async (req, res, next) => {
+    const userId = req.params.id;
+    const oneUser = await User.findById(userId)
+    res.json(oneUser);
+})
+
 //GET '/me' 
 router.get('/me', isLoggedIn(), (req, res, next) => {
     res.json(req.session.currentUser);
