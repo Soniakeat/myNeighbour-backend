@@ -11,6 +11,8 @@ router.get("/", isLoggedIn(), async (req, res, next) => {
         const allItems = await Item.find();
         res.json(allItems.reverse());
     } catch (error) {
+        console.log('items route')
+
         next(error);
     }
 });
@@ -29,10 +31,9 @@ router.get("/:id", isLoggedIn(), async (req, res, next) => {
 //POST Add One Item
 router.post("/add", isLoggedIn(), async (req, res, next) => {
     try {
-        const {
-            title,
-            description
-        } = req.body;
+        console.log(req.body)   
+        const { title,
+            description } = req.body;
         const ownerId = req.session.currentUser._id;
         const newItem = await Item.create({
             title,
@@ -59,12 +60,12 @@ router.put("/edit/:id", isLoggedIn(), async (req, res, next) => {
         if (item.owner.equals(ownerId)) {
             const newItem = await Item.findByIdAndUpdate(
                 itemId, {
-                    title,
-                    description,
-                    image
-                }, {
-                    new: true
-                }
+                title,
+                description,
+                image
+            }, {
+                new: true
+            }
             );
             res.json(newItem);
         } else {
@@ -106,10 +107,10 @@ router.put("/:id/contact/add", isLoggedIn(), async (req, res, next) => {
         }
         const itemWithContact = await Item.findByIdAndUpdate(
             itemId, {
-                contacts: newContacts
-            }, {
-                new: true
-            }
+            contacts: newContacts
+        }, {
+            new: true
+        }
         );
         res.json(itemWithContact);
     } catch (error) {

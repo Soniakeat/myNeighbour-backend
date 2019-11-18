@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 const itemSchema = new Schema({
 
-  image: String,
+  image: {
+    type: String,
+    default: "https://via.placeholder.com/200/92c952"
+  },
   title: {
     type: String,
     required: true

@@ -103,9 +103,9 @@ Responsive
 - addOneItem() - Add one item
 - editOneItem() - Edit one item
 - deleteOneItem() - Delete one item
-- addContactItem() - 
-- getOneUser() - Profile of one user
-- getOneUserItems() - Items of one user
+- addContactItem() - Add interested User to one item
+- getOneOwner() - Profile of one owner
+- getOwnerItems() - Items of one owner
 
 
 

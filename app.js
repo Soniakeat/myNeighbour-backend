@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require("cors");
 const path = require("path");
 const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
@@ -9,7 +10,6 @@ const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const cors = require("cors");
 
 // MONGOOSE CONNECTIONl
 mongoose
@@ -27,14 +27,6 @@ const app = express();
 
 // CORS MIDDLEWARE SETUP
 app.use(
-    cors({
-        credentials: true,
-        origin: [process.env.PUBLIC_DOMAIN]
-    })
-);
-
-// SESSION MIDDLEWARE
-app.use(
     session({
         store: new MongoStore({
             mongooseConnection: mongoose.connection,
@@ -48,15 +40,19 @@ app.use(
         }
     })
 );
+app.use(
+    cors({
+        credentials: true,
+        origin: [process.env.PUBLIC_DOMAIN]
+    })
+);
+
+// SESSION MIDDLEWARE
 
 // MIDDLEWARE
 app.use(logger("dev"));
 app.use(bodyParser.json());
-app.use(
-    bodyParser.urlencoded({
-        extended: false
-    })
-);
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 

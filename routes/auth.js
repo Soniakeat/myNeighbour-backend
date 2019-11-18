@@ -48,14 +48,15 @@ router.post('/login', isNotLoggedIn(), validationLoggin(), async (req, res, next
     } catch (error) {
         next(error);
     }
-}, );
+});
 
 //POST '/signup'
 router.post(
     "/signup", isNotLoggedIn(), validationLoggin(), async (req, res, next) => {
         const {
             email,
-            password
+            password,
+            firstName, lastName, phoneNumber, postalCode
         } = req.body;
         try {
             const emailExists = await User.findOne({
@@ -67,9 +68,14 @@ router.post(
                 const hashPass = bcrypt.hashSync(password, salt);
                 const newUser = await User.create({
                     email,
-                    password: hashPass
+                    password: hashPass,
+                    firstName,
+                    lastName,
+                    phoneNumber,
+                    postalCode
                 });
                 req.session.currentUser = newUser;
+
                 res
                     .status(200) //  OK
                     .json(newUser);
@@ -79,35 +85,6 @@ router.post(
         }
     }
 );
-
-//PUT '/signup/next'
-router.put(
-    "/signup/next/", isLoggedIn(), async (req, res, next) => {
-        const userId = req.session.currentUser._id
-        const {
-            userName,
-            firstName,
-            lastName,
-            postalCode,
-            phoneNumber
-        } = req.body;
-        User.findByIdAndUpdate(userId, {
-                userName,
-                firstName,
-                lastName,
-                postalCode,
-                phoneNumber
-            }, {
-                new: true
-            })
-            .then((user) => {
-                req.session.currentUser = user
-                res.json(user);
-            })
-            .catch(err => {
-                res.json(err);
-            })
-    })
 
 //  POST    'auth/logout'
 router.post('/logout', isLoggedIn(), (req, res, next) => {
