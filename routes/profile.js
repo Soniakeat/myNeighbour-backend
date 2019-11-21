@@ -38,7 +38,14 @@ router.get("/:id/items", isLoggedIn(), async (req, res, next) => {
 //PUT Edit profile
 router.put("/edit/:id", isLoggedIn(), async (req, res, next) => {
   const userId = req.session.currentUser._id;
-  const { email, firstName, lastName, postalCode, phoneNumber } = req.body;
+  const {
+    email,
+    firstName,
+    lastName,
+    postalCode,
+    phoneNumber,
+    avatarURL
+  } = req.body;
   User.findByIdAndUpdate(
     userId,
     {
@@ -46,7 +53,8 @@ router.put("/edit/:id", isLoggedIn(), async (req, res, next) => {
       firstName,
       lastName,
       postalCode,
-      phoneNumber
+      phoneNumber,
+      image: avatarURL
     },
     {
       new: true

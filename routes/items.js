@@ -32,11 +32,12 @@ router.get("/:id", isLoggedIn(), async (req, res, next) => {
 router.post("/add", isLoggedIn(), async (req, res, next) => {
   try {
     console.log(req.body);
-    const { title, description } = req.body;
+    const { title, description, avatarURL } = req.body;
     const ownerId = req.session.currentUser._id;
     const newItem = await Item.create({
       title,
       description,
+      image: avatarURL,
       owner: ownerId
     });
     res.json(newItem);
