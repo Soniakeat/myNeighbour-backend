@@ -50,7 +50,7 @@ router.post("/add", isLoggedIn(), async (req, res, next) => {
 router.patch("/edit/:id", isLoggedIn(), async (req, res, next) => {
   try {
     const itemId = req.params.id;
-    const { title, description, image } = req.body;
+    const { title, description, avatarURL } = req.body;
     const ownerId = req.session.currentUser._id;
     const item = await Item.findById(itemId);
     if (item.owner.equals(ownerId)) {
@@ -58,7 +58,8 @@ router.patch("/edit/:id", isLoggedIn(), async (req, res, next) => {
         itemId,
         {
           title,
-          description
+          description,
+          image: avatarURL
         },
         {
           new: true
