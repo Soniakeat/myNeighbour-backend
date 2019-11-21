@@ -93,7 +93,8 @@ router.post(
     }
 );
 
-//  POST    'auth/logout'
+
+//POST    'auth/logout'
 router.post('/logout', isLoggedIn(), (req, res, next) => {
     req.session.destroy();
     res
@@ -104,12 +105,12 @@ router.post('/logout', isLoggedIn(), (req, res, next) => {
 
 
 
-//  GET    '/private'   --> Only for testing - Same as /me but it returns a message instead
+//GET    '/private'
 router.get('/private', isLoggedIn(), (req, res, next) => {
     res
         .status(200)
         .json({
-            message: 'Test - User is logged in'
+            message: 'User is logged in'
         });
 });
 
