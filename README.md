@@ -214,16 +214,16 @@ Item model
 
 The url to your repository and to your deployed project
 
-[Client repository Link](http://github.com)
-[Server repository Link](http://github.com)
+[Client repository Link](https://github.com/Soniakeat/myneighbour-frontend)
+[Server repository Link](https://github.com/Soniakeat/myneighbour-backend)
 
-[Deploy Link](http://heroku.com)
+[Deploy Link](https://myneighbour-a584f.firebaseapp.com/)
 
 ### Slides
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides Link](https://docs.google.com/presentation/d/1l638xOs965tbf2FDyWEO7wwhsZh7ZGw_mW3KsBkXBAo/edit?usp=sharing)
 
 
 

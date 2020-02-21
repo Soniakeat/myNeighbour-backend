@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
@@ -11,7 +11,7 @@ const userSchema = new Schema(
     },
     image: {
       type: String,
-      default: "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
+      default: 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'
     },
     password: {
       type: String,
@@ -25,19 +25,19 @@ const userSchema = new Schema(
     items: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Item",
+        ref: 'Item',
         default: []
       }
     ]
   },
   {
     timestamps: {
-      createdAt: "created_at",
-      updatedAt: "updated_at"
+      createdAt: 'created_at',
+      updatedAt: 'updated_at'
     }
   }
 );
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
