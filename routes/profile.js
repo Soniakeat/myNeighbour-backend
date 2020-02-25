@@ -8,7 +8,7 @@ const Item = require("../models/Item");
 const { isLoggedIn } = require("../helpers/middlewares");
 
 //GET One User
-/* router.get("/:id", isLoggedIn(), async (req, res, next) => {
+router.get("/:id", isLoggedIn(), async (req, res, next) => {
     try {
         const userId = req.params.id;
         const oneUser = await User.findById(userId);
@@ -16,7 +16,7 @@ const { isLoggedIn } = require("../helpers/middlewares");
     } catch (error) {
         next(error);
     }
-}); */
+}); 
 
 //GET Profile info of owner and his items
 router.get("/:id/items", isLoggedIn(), async (req, res, next) => {
@@ -35,7 +35,7 @@ router.get("/:id/items", isLoggedIn(), async (req, res, next) => {
   }
 });
 
-//PUT Edit profile
+//PUT Edit personal profile
 router.put("/edit/:id", isLoggedIn(), async (req, res, next) => {
   const userId = req.session.currentUser._id;
   const {
@@ -69,7 +69,7 @@ router.put("/edit/:id", isLoggedIn(), async (req, res, next) => {
     });
 });
 
-//DELETE Delete Profile
+//DELETE Delete personal profile
 router.delete("/delete/:id", isLoggedIn(), async (req, res, next) => {
   const userId = req.session.currentUser._id;
   const sessionId = req.params.id;

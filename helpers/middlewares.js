@@ -20,5 +20,4 @@ exports.validationLoggin = () => (req, res, next) => {
 
   if (!email || !password) next(createError(400));
   else next();
-
 }

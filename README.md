@@ -47,7 +47,7 @@ Responsive
 - /auth/login - Login from
 - /auth/signup - Signup form
 - /auth/signup/next - Signup next form
-- /auth/logout
+- /auth/logout - Logout
 - /auth/me - Administrator identification
 
 ### Items
@@ -163,8 +163,10 @@ Item model
     - phoneNumber
 - POST /auth/logout
 - GET /auth/me
+```
 
 ### Items
+```
 - GET /items
 - GET /items/_id
 - POST /item/add
@@ -188,9 +190,10 @@ Item model
   - body:
       - phoneNumber
       - email
-  
+```
 
 ### profile
+```
 - GET /profile/_id
 - GET /profile/_id/contact
 - GET /profile/edit

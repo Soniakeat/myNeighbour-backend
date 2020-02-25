@@ -93,7 +93,6 @@ router.post(
     }
 );
 
-
 //POST    'auth/logout'
 router.post('/logout', isLoggedIn(), (req, res, next) => {
     req.session.destroy();
@@ -102,8 +101,6 @@ router.post('/logout', isLoggedIn(), (req, res, next) => {
         .send();
     return;
 });
-
-
 
 //GET    '/private'
 router.get('/private', isLoggedIn(), (req, res, next) => {

@@ -32,10 +32,6 @@ const Item = [
     }  
 ]
 
-
-
-
-
 User.create(Users)
     .then(User => {
         console.log(User);
@@ -43,7 +39,6 @@ User.create(Users)
     .catch(err => {
         return err
     })
-
 
 Item.create(Items)
     .then(Item => {

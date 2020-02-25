@@ -3,6 +3,7 @@ const router = express.Router();
 const Item = require("../models/Item");
 const { isLoggedIn } = require("../helpers/middlewares");
 
+
 //GET all items
 router.get("/", isLoggedIn(), async (req, res, next) => {
   try {
@@ -10,12 +11,11 @@ router.get("/", isLoggedIn(), async (req, res, next) => {
     res.json(allItems.reverse());
   } catch (error) {
     console.log("items route");
-
     next(error);
   }
 });
 
-//GET One Item / Contacts item ????
+//GET One Item / Contacts item 
 router.get("/:id", isLoggedIn(), async (req, res, next) => {
   try {
     const itemId = req.params.id;
