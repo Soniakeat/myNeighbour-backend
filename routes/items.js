@@ -118,28 +118,4 @@ router.put("/:id/contact/add", isLoggedIn(), async (req, res, next) => {
   }
 });
 
-//DELETE Delete Contact to item                   ??????
-/* router.get(
-    "/:itemId/contact/:contactId/delete",
-    isLoggedIn(),
-    async (req, res, next) => {
-        try {
-            const {
-                itemId
-            } = req.params;
-            const {
-                contactId
-            } = req.params;
-
-            const itemWithContact = await Item.findById(
-                itemId
-            );
-            itemWithContact.contacts
-            res.json(itemWithContact.contacts);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-); */
-
 module.exports = router;

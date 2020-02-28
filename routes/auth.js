@@ -84,7 +84,7 @@ router.post(
                 req.session.currentUser = newUser;
 
                 res
-                    .status(200) //  OK
+                    .status(200) 
                     .json(newUser);
             }
         } catch (error) {

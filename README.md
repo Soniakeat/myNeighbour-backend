@@ -2,8 +2,7 @@
 myNEIGHBOUR
 
 ## Description
-myNEIGHBOUR is an app to free ourselves from all the things we accumulate and never use.
-With myNEIGHBOUR, the user can propose his unused items that his neighbours need and vis & Versa. A freeway to favour recycling, reduce excessive consumption and free up space at home, revitalizing the proximity social bond.
+myNEIGHBOUR is a MERN full-stack app (mobile first) to free ourselves from all the things we accumulate and never use. With myNEIGHBOUR, the user can propose his unused items that his neighbours need and vis & Versa. A freeway to favour recycling, reduce excessive consumption and free up space at home, revitalizing the proximity social bond.
 
 ## User Stories
 - **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault

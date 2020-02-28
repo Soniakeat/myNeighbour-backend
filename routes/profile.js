@@ -69,6 +69,25 @@ router.put("/edit/:id", isLoggedIn(), async (req, res, next) => {
     });
 });
 
+//Archive user
+router.put("/archive/:id", isLoggedIn(), async (req, res, next) => {
+  const userId = req.session.currentUser._id;
+  User.findByIdAndUpdate(
+    userId,
+    {
+     archived: true
+    },
+    {
+      new: true
+    }
+  )
+    .then(user => {
+      res.json(user);
+    })
+    .catch(error => {
+      res.json(error);
+    });
+});
 //DELETE Delete personal profile
 router.delete("/delete/:id", isLoggedIn(), async (req, res, next) => {
   const userId = req.session.currentUser._id;
